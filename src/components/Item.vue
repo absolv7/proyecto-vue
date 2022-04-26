@@ -1,23 +1,20 @@
 <template>
 	<div class="item">
-		<b-img
-			thumbnail
-			fluid
-			src="https://picsum.photos/250/250/?image=54"
-			alt="Image 1"
-		></b-img>
+		<h3>{{ nombre }}</h3>
 
-		<h3>Precio: {{ precio }}</h3>
+		<b-img thumbnail fluid :src="imagen" alt="Image"></b-img>
+
+		<h3>${{ precio }}</h3>
 	</div>
 </template>
 
 <script>
 export default {
 	name: 'ItemVue',
-	data() {
-		return {
-			precio: 12345,
-		};
+	props: {
+		nombre: String,
+		precio: Number,
+		imagen: String,
 	},
 };
 </script>
@@ -25,9 +22,9 @@ export default {
 <style scoped>
 .item {
 	display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    gap: 10px;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
 }
 </style>
