@@ -1,12 +1,14 @@
 <template>
 	<div>
 		<h1>Products</h1>
-		<div v-for="item in items" :key="item.nombre" class="products">
-			<ItemVue
-				:nombre="item.nombre"
-				:precio="item.precio"
-				:imagen="item.imagen"
-			></ItemVue>
+		<div class="products">
+			<div v-for="item in items" :key="item.nombre">
+				<ItemVue
+					:nombre="item.nombre"
+					:precio="item.precio"
+					:imagen="item.imagen"
+				></ItemVue>
+			</div>
 		</div>
 	</div>
 </template>
@@ -44,5 +46,6 @@ export default {
 .products {
 	display: flex;
 	justify-content: space-evenly;
+	align-items: center;
 }
 </style>
