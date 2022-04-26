@@ -1,30 +1,87 @@
 <template>
-	<div class="home">
-		<b-button block v-b-toggle.accordion-1 variant="primary">
-			Info
-		</b-button>
+    <div class="home">
+        <h1>PROSEGUR<br>SOLUTIONS</h1>
+        <hr />
+        <div class="accordion" role="tablist">
+            <b-card no-body class="mb-3">
+                <b-card-header header-tag="header" class="p-1" role="tab">
+                    <b-button block v-b-toggle.accordion-1 variant="warning"
+                        >Alarms</b-button
+                    >
+                </b-card-header>
+                <b-collapse
+                    id="accordion-1"
+                    visible
+                    accordion="my-accordion"
+                    role="tabpanel"
+                >
+                    <b-card-body>
+                        <b-card-text>{{ alarmas }}</b-card-text>
+                    </b-card-body>
+                </b-collapse>
+            </b-card>
 
-		<b-collapse id="accordion-1" accordion="my-accordion" role="tabpanel">
-			<b-card-body>
-				Lorem Ipsum is simply dummy text of the printing and typesetting
-				industry. Lorem Ipsum has been the industry's standard dummy
-				text ever since the 1500s, when an unknown printer took a galley
-				of type and scrambled it to make a type specimen book. It has
-				survived not only five centuries, but also the leap into
-				electronic typesetting, remaining essentially unchanged. It was
-				popularised in the 1960s with the release of Letraset sheets
-				containing Lorem Ipsum passages, and more recently with desktop
-				publishing software like Aldus PageMaker including versions of
-				Lorem Ipsum.
-			</b-card-body>
-		</b-collapse>
+            <b-card no-body class="mb-3">
+                <b-card-header header-tag="header" class="p-1" role="tab">
+                    <b-button block v-b-toggle.accordion-2 variant="warning"
+                        >Security</b-button
+                    >
+                </b-card-header>
+                <b-collapse
+                    id="accordion-2"
+                    accordion="my-accordion"
+                    role="tabpanel"
+                >
+                    <b-card-body>
+                        <b-card-text>{{ seguridad }}</b-card-text>
+                    </b-card-body>
+                </b-collapse>
+            </b-card>
 
-		<h3></h3>
-	</div>
+            <b-card no-body class="mb-3">
+                <b-card-header header-tag="header" class="p-1" role="tab">
+                    <b-button block v-b-toggle.accordion-3 variant="warning"
+                        >Cash</b-button
+                    >
+                </b-card-header>
+                <b-collapse
+                    id="accordion-3"
+                    accordion="my-accordion"
+                    role="tabpanel"
+                >
+                    <b-card-body>
+                        <b-card-text>{{ efectivo }}</b-card-text>
+                    </b-card-body>
+                </b-collapse>
+            </b-card>
+        </div>
+    </div>
 </template>
 
 <script>
 export default {
-	name: 'HomeView',
+    data() {
+        return {
+            efectivo: `Logistics, Cash, Management and Automation services for Financial Institutions, Banks and businesses.`,
+            alarmas: `Offers high quality solutions for residential and commercial alarms.`,
+            seguridad: `Comprehensive Security Solutions, with the most innovative Surveillance and Technology services, adapted to each client.`,
+        };
+    },
 };
 </script>
+
+<style scoped>
+h1 {
+    font-weight: bold;
+    font-family: "Times New Roman", Times, serif;
+}
+
+p {
+    font-size: 24px;
+    font-style: italic;
+}
+
+button {
+    font-size: 20px;
+}
+</style>

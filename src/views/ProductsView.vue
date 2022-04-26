@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<h1>Products</h1>
+		<hr>
 		<div v-for="item in items" :key="item.nombre" class="products">
 			<ItemVue
 				:nombre="item.nombre"
@@ -41,6 +42,11 @@ export default {
 </script>
 
 <style scoped>
+
+h1 {
+	font-style: oblique;
+	text-decoration: underline;
+}
 .products {
 	display: flex;
 	justify-content: space-evenly;

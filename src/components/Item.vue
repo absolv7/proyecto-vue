@@ -1,9 +1,7 @@
 <template>
 	<div class="item">
 		<h3>{{ nombre }}</h3>
-
-		<b-img thumbnail fluid :src="imagen" alt="Image"></b-img>
-
+		<b-img :src="imagen" alt="Image"></b-img> 
 		<h3>${{ precio }}</h3>
 	</div>
 </template>
@@ -26,5 +24,10 @@ export default {
 	justify-content: center;
 	align-items: center;
 	gap: 10px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	border: solid 1px;
+	padding: 20px;
+	border-radius: 35px;
 }
 </style>
