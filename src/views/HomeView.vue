@@ -1,18 +1,37 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+	<div class="home">
+		<!-- <b-card no-body class="mb-1"> -->
+			<!-- <b-card-header header-tag="header" class="p-1" role="tab"> -->
+			<b-button block v-b-toggle.accordion-1 variant="primary">
+				Info
+			</b-button>
+			<!-- </b-card-header> -->
+			<b-collapse
+				id="accordion-1"
+				accordion="my-accordion"
+				role="tabpanel"
+			>
+				<b-card-body>
+					Lorem Ipsum is simply dummy text of the printing and
+					typesetting industry. Lorem Ipsum has been the industry's
+					standard dummy text ever since the 1500s, when an unknown
+					printer took a galley of type and scrambled it to make a
+					type specimen book. It has survived not only five centuries,
+					but also the leap into electronic typesetting, remaining
+					essentially unchanged. It was popularised in the 1960s with
+					the release of Letraset sheets containing Lorem Ipsum
+					passages, and more recently with desktop publishing software
+					like Aldus PageMaker including versions of Lorem Ipsum.
+				</b-card-body>
+			</b-collapse>
+		<!-- </b-card> -->
+
+		<h3></h3>
+	</div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
 export default {
-  name: 'HomeView',
-  components: {
-    HelloWorld
-  }
-}
+	name: 'HomeView',
+};
 </script>
