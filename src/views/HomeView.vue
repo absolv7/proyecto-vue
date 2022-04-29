@@ -67,6 +67,7 @@ export default {
             seguridad: `Comprehensive Security Solutions, with the most innovative Surveillance and Technology services, adapted to each client.`,
         };
     },
+
 };
 </script>
 
