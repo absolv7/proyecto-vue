@@ -1,14 +1,15 @@
 import { shallowMount } from "@vue/test-utils";
 import HomeView from "@/views/HomeView";
 
-
 describe("Componente HomeView", () => {
-  test("Debe hacer match con el snapshot", () => {
-
-    // Monto el componente HomeView
+  test("La clase debe ser HOME", () => {
     const wrapper = shallowMount(HomeView);
 
-    //Espero que el html sea identico al snapshot.
-    expect(wrapper.html()).toMatchSnapshot();
+      // Capturo las clases del div: "cs", en la variable clases
+    const clases = wrapper.find('[data-testid="cs"]').classes()
+
+      // Espero que "clases" contenga "home"
+    expect(clases).toContain("home")
+
   });
 });
