@@ -1,5 +1,5 @@
 <template>
-    <div class="home" data-testid="cs">
+    <div class="home">
         <h1>PROSEGUR<br>SOLUTIONS</h1>
         <hr />
         <div class="accordion" role="tablist">
