@@ -1,12 +1,15 @@
 <template>
-	<div>
+	<div class="container">
 		<h1>Products</h1>
+		<Carrito @eliminarCarrito="eliminarCarrito" :productos="productos"/>
 		<div class="products">
 			<div v-for="{ nombre, precio, imagen } in items" :key="nombre">
 				<ItemVue
+					:productos="productos"
 					:nombre="nombre"
 					:precio="precio"
 					:imagen="imagen"
+					@agregarCarrito="agregarCarrito"
 				></ItemVue>
 			</div>
 		</div>
@@ -15,6 +18,7 @@
 
 <script>
 import ItemVue from '../components/Item.vue';
+import Carrito from '../components/Carrito.vue';
 
 const items = [
 	{
@@ -39,9 +43,18 @@ export default {
 	data() {
 		return {
 			items,
+			productos: [],
 		};
 	},
-	components: { ItemVue },
+	components: { ItemVue, Carrito },
+	methods: {
+		agregarCarrito({ nombre, precio, imagen }) {
+			this.productos = [...this.productos, { nombre, precio, imagen }];
+		},
+		eliminarCarrito({nombre}){
+			this.productos = this.productos.filter((producto)=>producto.nombre!==nombre);
+		}
+	},
 };
 </script>
 
@@ -52,7 +65,13 @@ h1 {
 }
 .products {
 	display: flex;
-	justify-content: space-evenly;
+	align-items: center;
+	gap: 30px;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
 	align-items: center;
 }
 </style>
