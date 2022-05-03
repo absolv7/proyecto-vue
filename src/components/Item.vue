@@ -1,8 +1,8 @@
 <template>
 	<div class="item">
-		<h3>{{ nombre }}</h3>
-		<b-img :src="imagen" alt="Image"></b-img>
-		<h3>${{ precio }}</h3>
+		<p>{{ nombre }}</p>
+		<b-img class="jaja" :src="imagen" alt="Image" thumbnail></b-img>
+		<p>${{ precio }}</p>
 		<b-button @click="$emit('agregarCarrito', { nombre, precio, imagen })">
 			<b-icon icon="cart-plus"></b-icon>
 		</b-button>
@@ -32,11 +32,20 @@ export default {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	gap: 10px;
+	width: 200px;
+	height: 250px;
 	margin-top: 10px;
-	margin-bottom: 20px;
+	/* margin-bottom: 20px; */
 	border: solid 1px;
 	padding: 20px;
-	border-radius: 35px;
+	border-radius: 20px;
+	
 }
+
+.jaja {
+	width: 110px;
+	height: 110px;
+	object-fit: contain
+}
+
 </style>

@@ -19,24 +19,7 @@
 <script>
 import ItemVue from '../components/Item.vue';
 import Carrito from '../components/Carrito.vue';
-
-const items = [
-	{
-		nombre: 'HyperX Pulsefire Dart',
-		precio: 2500,
-		imagen: 'https://http2.mlstatic.com/D_NQ_NP_601015-MLA41817790074_052020-O.webp',
-	},
-	{
-		nombre: 'HyperX Pulsefire',
-		precio: 5000,
-		imagen: 'https://http2.mlstatic.com/D_NQ_NP_835019-MLA32158087459_092019-O.webp',
-	},
-	{
-		nombre: 'Logitech Lightspeed G703',
-		precio: 3000,
-		imagen: 'https://http2.mlstatic.com/D_NQ_NP_920865-MLA41632030645_052020-O.webp',
-	},
-];
+import items from '../components/Mouses'
 
 export default {
 	name: 'Products',
@@ -65,8 +48,11 @@ h1 {
 }
 .products {
 	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
 	align-items: center;
 	gap: 30px;
+	margin-top: 30px;
 }
 
 .container {
