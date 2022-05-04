@@ -1,7 +1,7 @@
 <template>
 	<div class="item">
 		<p>{{ nombre }}</p>
-		<b-img class="jaja" :src="imagen" alt="Image" thumbnail></b-img>
+		<b-img class="imagen-a" :src="imagen" alt="Image" thumbnail></b-img>
 		<p>${{ precio }}</p>
 		<b-button @click="$emit('agregarCarrito', { nombre, precio, imagen })">
 			<b-icon icon="cart-plus"></b-icon>
@@ -42,7 +42,7 @@ export default {
 	
 }
 
-.jaja {
+.imagen-a {
 	width: 110px;
 	height: 110px;
 	object-fit: contain
