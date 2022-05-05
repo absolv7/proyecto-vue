@@ -1,7 +1,16 @@
 <template>
 	<div class="container">
-		<h1>Products</h1>
-		<Carrito @eliminarCarrito="eliminarCarrito" :productos="productos" />
+		<div class="carrito">
+			<div class="titulo">
+				<h1>Products</h1>
+			</div>
+
+			<Carrito
+				@eliminarCarrito="eliminarCarrito"
+				:productos="productos"
+			/>
+		</div>
+
 		<div class="products">
 			<div
 				v-for="({ nombre, precio, imagen }, index) in items"
@@ -54,7 +63,7 @@ h1 {
 .products {
 	display: flex;
 	max-width: 730px;
-	max-height: 400px;
+	max-height: 520px;
 	overflow-y: scroll;
 	flex-wrap: wrap;
 	width: 100%;
@@ -71,5 +80,14 @@ h1 {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+}
+
+.carrito {
+	display: flex;
+	gap: 20px;
+}
+
+.titulo {
+	display: flex;
 }
 </style>
