@@ -1,5 +1,5 @@
 <template>
-    <div class="carrito" v-b-modal.carrito-mod>
+    <div class="carrito" v-b-modal.carrito-mod v-b-tooltip.hover.righttop title="Click para ver mi carrito">
         <b-icon class="carrito-icon" icon="cart"></b-icon>
 		<h2>=</h2>
         <h2>{{ productos.length }}</h2>
@@ -37,11 +37,11 @@ export default {
 .carrito {
     display: flex !important;
     width: 200px !important;
-    background-color: white;
+    background-color: aquamarine;
     justify-content: space-evenly !important;
     align-items: baseline !important;
     gap: 5px;
-    border: 1px solid black;
+    border: 2px solid black;
     width: fit-content;
     padding: 8px;
     border-radius: 5px;

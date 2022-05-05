@@ -3,7 +3,7 @@
 		<p>{{ nombre }}</p>
 		<b-img class="imagen-a" :src="imagen" alt="Image" thumbnail></b-img>
 		<p>${{ precio }}</p>
-		<b-button @click="$emit('agregarCarrito', { nombre, precio, imagen })">
+		<b-button @click="$emit('agregarCarrito', { nombre, precio, imagen })" v-b-tooltip.hover title="Añadir a Carrito">
 			<b-icon icon="cart-plus"></b-icon>
 		</b-button>
 	</div>

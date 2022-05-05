@@ -48,11 +48,19 @@ h1 {
 }
 .products {
 	display: flex;
+	max-width: 730px;
+	max-height: 400px;
+	overflow-y: scroll;
 	flex-wrap: wrap;
 	width: 100%;
 	align-items: center;
 	gap: 30px;
-	margin-top: 30px;
+	margin-top: 20px;
+	border: 4px solid brown;
+	border-radius: 10px;
+	justify-content: center;
+	margin-bottom: 50px;
+	
 }
 
 .container {
