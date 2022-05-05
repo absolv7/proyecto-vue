@@ -54,7 +54,7 @@ const items = [
 		precio: 1545,
 		imagen: 'https://http2.mlstatic.com/D_NQ_NP_884154-MLA32846176642_112019-V.webp ',
 	},
-    {
+	{
 		nombre: 'Genius dx110 B',
 		precio: 750,
 		imagen: 'https://http2.mlstatic.com/D_NQ_NP_608891-MLA31023920148_062019-V.webp',
@@ -109,7 +109,7 @@ const items = [
 		precio: 1545,
 		imagen: 'https://http2.mlstatic.com/D_NQ_NP_884154-MLA32846176642_112019-V.webp ',
 	},
-    {
+	{
 		nombre: 'Genius dx110 C',
 		precio: 750,
 		imagen: 'https://http2.mlstatic.com/D_NQ_NP_608891-MLA31023920148_062019-V.webp',
@@ -164,8 +164,8 @@ const items = [
 		precio: 1545,
 		imagen: 'https://http2.mlstatic.com/D_NQ_NP_884154-MLA32846176642_112019-V.webp ',
 	},
-	
+
 ];
 
 
-export default items
+export default items;

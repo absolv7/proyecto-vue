@@ -6,9 +6,9 @@
         <b-modal id="carrito-mod" title="Mi Carrito" scrollable
             >Total de productos: {{ productos.length }}
             <ol>
-                <li v-for="{ nombre, precio } in productos" :key="nombre">
+                <li v-for="({ nombre, precio }, index) in productos" :key="index">
                     <p>* {{ nombre }} = ${{precio}}</p>
-                    <b-button @click="$emit('eliminarCarrito', { nombre })">
+                    <b-button @click="$emit('eliminarCarrito', { index })">
                         <b-icon icon="cart-x-fill"></b-icon>
                     </b-button>
                 </li>
