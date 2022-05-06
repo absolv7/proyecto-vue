@@ -23,9 +23,9 @@
 					>
 				</div>
 
-				<ol>
+				<ol class="data">
 					<li
-						v-for="({ nombre, precio }, index) in productos"
+						v-for="({ nombre, precio, imagen }, index) in productos"
 						:key="index"
 					>
 						<p v-if="contar(nombre) > 1">
@@ -33,7 +33,16 @@
 								precio * contar(nombre)
 							}}
 						</p>
-						<p v-else>{{ nombre }} = ${{ precio }}</p>
+						<div class="item" v-else>
+							<img
+								class="imagen-a"
+								:src="imagen"
+								alt="Image"
+								thumbnail
+							/>
+							<p>{{ nombre }} = ${{ precio }}</p>
+						</div>
+
 						<b-button
 							variant="danger"
 							@click="eliminarCarrito(index)"
@@ -138,7 +147,7 @@ export default {
 
 li {
 	display: flex;
-	align-items: baseline;
+	align-items: center;
 	justify-content: space-between;
 }
 
@@ -161,5 +170,21 @@ li {
 	justify-content: space-between;
 	margin-bottom: 25px;
 	align-items: baseline;
+}
+
+.imagen-a {
+	width: 40px;
+	height: 40px;
+}
+
+.item {
+	display: flex;
+	gap: 5px;
+	margin-bottom: 15px;
+}
+
+.data {
+	display: flex;
+	flex-direction: column;
 }
 </style>
