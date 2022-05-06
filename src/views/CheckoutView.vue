@@ -1,14 +1,23 @@
 <template>
 	<div class="container">
 		<h1>CHECKOUT</h1>
-		<Item
-			v-if="object"
-			:imagen="object.imagen"
-			:nombre="object.nombre"
-			:precio="object.precio"
-			:checkout="true"
-		/>
-		<h1 v-else>Empty cart</h1>
+		<div v-if="objects.length <= 1">
+			<Item
+				v-for="(object, index) in objects"
+				:key="index"
+				:imagen="object.imagen"
+				:nombre="object.nombre"
+				:precio="object.precio"
+				:checkout="true"
+			/>
+		</div>
+
+		<h1 v-else>
+			<h3 v-for="(object, index) in objects" :key="index">
+				{{ object.nombre }}
+				${{ object.precio }}
+			</h3>
+		</h1>
 		<b-button variant="success">Continuar compra</b-button>
 	</div>
 </template>
@@ -20,7 +29,7 @@ export default {
 	name: 'Checkout',
 	data() {
 		return {
-			object: {},
+			objects: [],
 		};
 	},
 	components: {
@@ -33,7 +42,7 @@ export default {
 	// 	productos: Array,
 	// }
 	mounted() {
-		this.object = JSON.parse(localStorage.getItem('productos-vue'))[0]; // Antes de montar la app creo una variable en el local storage
+		this.objects = JSON.parse(localStorage.getItem('productos-vue')); // Antes de montar la app creo una variable en el local storage
 	},
 };
 </script>

@@ -15,7 +15,7 @@
 					Cantidad de productos: {{ productos.length }}
 
 					<b-button
-						@click="$emit('vaciarCarrito')"
+						@click="vaciarCarrito"
 						v-b-tooltip.hover
 						title="Vaciar carrito"
 						variant="danger"
@@ -36,7 +36,7 @@
 						<p v-else>{{ nombre }} = ${{ precio }}</p>
 						<b-button
 							variant="danger"
-							@click="$emit('eliminarCarrito', { index })"
+							@click="eliminarCarrito(index)"
 						>
 							<b-icon icon="cart-x-fill"></b-icon>
 						</b-button>
@@ -61,17 +61,19 @@ export default {
 	name: 'carrito',
 	data() {
 		return {
-			cantidadProductos: this.productos,
+			productos: localStorage.getItem('productos-vue')
+				? localStorage.getItem('productos-vue')
+				: [],
 		};
 	},
 	props: {
 		nombre: String,
 		precio: Number,
 		imagen: String,
-		productos: {
-			type: Array,
-			default: [],
-		},
+		// productos: {
+		// 	type: Array,
+		// 	default: [],
+		// },
 	},
 	methods: {
 		contar(nombre) {
@@ -84,6 +86,32 @@ export default {
 			);
 
 			return filtrado.length;
+		},
+		eliminarCarrito(index) {
+			if (this.productos.length === 0) return;
+
+			this.productos = this.productos.filter(
+				(producto, productIndex) => index !== productIndex
+			);
+			localStorage.setItem(
+				'productos-vue',
+				JSON.stringify(this.productos)
+			); //Agrego el array "Productos" al local storage
+		},
+		vaciarCarrito() {
+			this.productos = [];
+			localStorage.clear();
+		},
+	},
+	mounted() {
+		if (localStorage.getItem('productos-vue')) {
+			this.productos = JSON.parse(localStorage.getItem('productos-vue')); // Antes de montar la app creo una variable en el local storage
+			console.log(this.productos);
+		}
+	},
+	watch: {
+		productos(value) {
+			localStorage.getItem('productos-vue');
 		},
 	},
 };

@@ -4,7 +4,6 @@
 			<template #shopping-cart>
 				<Carrito
 					@eliminarCarrito="eliminarCarrito"
-					:productos="productos"
 					@vaciarCarrito="vaciarCarrito"
 				/>
 			</template>

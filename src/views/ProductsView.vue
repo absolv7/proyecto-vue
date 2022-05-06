@@ -12,7 +12,6 @@
 				:key="index"
 			>
 				<ItemVue
-					:productos="productos"
 					:nombre="nombre"
 					:precio="precio"
 					:imagen="imagen"
@@ -26,7 +25,6 @@
 
 <script>
 import ItemVue from '../components/Item.vue';
-import Carrito from '../components/Carrito.vue';
 import items from '../components/Mouses';
 
 export default {
@@ -34,16 +32,10 @@ export default {
 	data() {
 		return {
 			items,
-			productos: [
-				{
-					nombre: '',
-					imagen: '',
-					precio: 0,
-				},
-			],
+			productos: [],
 		};
 	},
-	components: { ItemVue, Carrito },
+	components: { ItemVue },
 	methods: {
 		agregarCarrito({ nombre, precio, imagen }) {
 			this.productos = [...this.productos, { nombre, precio, imagen }];
@@ -52,17 +44,7 @@ export default {
 				JSON.stringify(this.productos)
 			); //Agrego el array "Productos" al local storage
 		},
-		eliminarCarrito({ index }) {
-			if (this.productos.length === 0) return;
 
-			this.productos = this.productos.filter(
-				(producto, productIndex) => index !== productIndex
-			);
-			localStorage.setItem(
-				'productos-vue',
-				JSON.stringify(this.productos)
-			); //Agrego el array "Productos" al local storage
-		},
 		comprar({ nombre, precio, imagen }) {
 			this.productos = [{ nombre, precio, imagen }];
 			this.$router.push('/checkout');
@@ -70,10 +52,6 @@ export default {
 				'productos-vue',
 				JSON.stringify(this.productos)
 			);
-		},
-		vaciarCarrito() {
-			this.productos = [];
-			localStorage.clear();
 		},
 	},
 	mounted() {
