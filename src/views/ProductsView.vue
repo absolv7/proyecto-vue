@@ -8,6 +8,7 @@
 			<Carrito
 				@eliminarCarrito="eliminarCarrito"
 				:productos="productos"
+				@vaciarCarrito="vaciarCarrito"
 			/>
 		</div>
 
@@ -73,7 +74,10 @@ export default {
 				'productos-vue',
 				JSON.stringify(this.productos)
 			);
-
+		},
+		vaciarCarrito() {
+			this.productos = [];
+			localStorage.clear();
 		},
 	},
 	mounted() {
@@ -112,11 +116,14 @@ h1 {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	width: fit-content;
 }
 
 .carrito {
 	display: flex;
-	gap: 20px;
+	/* gap: 20px; */
+	width: 100%;
+    justify-content: space-between;
 }
 
 .titulo {
