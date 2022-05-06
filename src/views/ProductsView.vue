@@ -4,12 +4,6 @@
 			<div class="titulo">
 				<h1>Products</h1>
 			</div>
-
-			<Carrito
-				@eliminarCarrito="eliminarCarrito"
-				:productos="productos"
-				@vaciarCarrito="vaciarCarrito"
-			/>
 		</div>
 
 		<div class="products">
@@ -59,6 +53,8 @@ export default {
 			); //Agrego el array "Productos" al local storage
 		},
 		eliminarCarrito({ index }) {
+			if (this.productos.length === 0) return;
+
 			this.productos = this.productos.filter(
 				(producto, productIndex) => index !== productIndex
 			);
@@ -121,9 +117,6 @@ h1 {
 
 .carrito {
 	display: flex;
-	/* gap: 20px; */
-	width: 100%;
-    justify-content: space-between;
 }
 
 .titulo {

@@ -1,14 +1,30 @@
 <template>
 	<div id="app">
-		<nav>
-			<router-link to="/">Home</router-link> |
-			<router-link to="/products">Products</router-link> |
-			<router-link to="/about">About</router-link> |
-			<router-link to="/checkout">Checkout</router-link>
-		</nav>
+		<nav-bar>
+			<template #shopping-cart>
+				<Carrito
+					@eliminarCarrito="eliminarCarrito"
+					:productos="productos"
+					@vaciarCarrito="vaciarCarrito"
+				/>
+			</template>
+		</nav-bar>
+
 		<router-view />
 	</div>
 </template>
+
+<script>
+import NavBar from '../src/components/NavBar.vue';
+import Carrito from '../src/components/Carrito.vue';
+
+export default {
+	components: {
+		NavBar,
+		Carrito,
+	},
+};
+</script>
 
 <style>
 #app {
@@ -21,6 +37,10 @@
 
 nav {
 	padding: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: baseline;
+	gap: 17px;
 }
 
 nav a {

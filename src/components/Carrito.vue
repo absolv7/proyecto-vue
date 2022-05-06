@@ -6,13 +6,13 @@
 		title="Click para ver mi carrito"
 	>
 		<b-icon class="carrito-icon" icon="cart"></b-icon>
-		<h2>:</h2>
-		<h2>{{ productos.length }}</h2>
+		<h3>:</h3>
+		<h3>{{ productos.length }}</h3>
 
 		<b-modal id="carrito-mod" title="Mi Carrito" scrollable>
-			<div class="my-modal" v-if="cantidadProductos.length > 0">
+			<div class="my-modal" v-if="productos.length > 0">
 				<div class="titulo">
-					Cantidad de productos: {{ cantidadProductos.length }}
+					Cantidad de productos: {{ productos.length }}
 
 					<b-button
 						@click="$emit('vaciarCarrito')"
@@ -58,7 +58,7 @@
 
 <script>
 export default {
-	name: 'Carrito',
+	name: 'carrito',
 	data() {
 		return {
 			cantidadProductos: this.productos,
@@ -68,7 +68,10 @@ export default {
 		nombre: String,
 		precio: Number,
 		imagen: String,
-		productos: Array,
+		productos: {
+			type: Array,
+			default: [],
+		},
 	},
 	methods: {
 		contar(nombre) {
@@ -88,19 +91,20 @@ export default {
 
 <style scoped>
 .carrito-icon {
-	font-size: 25px;
+	font-size: 22px;
 }
 
 .carrito {
 	display: flex !important;
-	width: 150px !important;
-	background-color: aquamarine;
+	color: white;
+	background-color: #42b983;
 	justify-content: space-evenly !important;
 	align-items: baseline !important;
 	gap: 5px;
-	border: 2px solid black;
+	border: 1px solid white;
 	width: fit-content;
-	padding: 8px;
+	height: fit-content;
+	padding: 6px;
 	border-radius: 5px;
 }
 
