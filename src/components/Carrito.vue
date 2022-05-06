@@ -53,7 +53,7 @@ export default {
 
 .carrito {
 	display: flex !important;
-	width: 110px !important;
+	width: 200px !important;
 	background-color: aquamarine;
 	justify-content: space-evenly !important;
 	align-items: baseline !important;

@@ -45,13 +45,23 @@ export default {
 	methods: {
 		agregarCarrito({ nombre, precio, imagen }) {
 			this.productos = [...this.productos, { nombre, precio, imagen }];
+			localStorage.setItem('productos-vue', JSON.stringify(this.productos)) //Agrego el array "Productos" al local storage
 		},
 		eliminarCarrito({ index }) {
 			this.productos = this.productos.filter(
 				(producto, productIndex) => index !== productIndex
 			);
+			localStorage.setItem('productos-vue', JSON.stringify(this.productos))  //Agrego el array "Productos" al local storage
 		},
 	},
+	created() {
+		let datosDB = JSON.parse(localStorage.getItem('productos-vue'))  // Antes de montar la app creo una variable en el local storage
+		if(datosDB === null){         
+			this.productos = []          // Si no hay datos, el array queda vacío
+		}else{
+			this.productos = datosDB     // Sino, trae los datos existentes
+		}
+	}
 };
 </script>
 
