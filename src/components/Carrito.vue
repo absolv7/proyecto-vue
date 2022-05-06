@@ -8,16 +8,25 @@
 		<b-icon class="carrito-icon" icon="cart"></b-icon>
 		<h2>:</h2>
 		<h2>{{ productos.length }}</h2>
+
 		<b-modal id="carrito-mod" title="Mi Carrito" scrollable
-			>Cantidad de productos: {{ productos.length }}
+			>Cantidad de productos: {{ cantidadProductos.length }}
 
 			<ol>
 				<li
 					v-for="({ nombre, precio }, index) in productos"
 					:key="index"
 				>
-					<p>* {{ nombre }} = ${{ precio }}</p>
-					<b-button @click="$emit('eliminarCarrito', { index })">
+					<p v-if="contar(nombre) > 1">
+						{{ contar(nombre) }} * {{ nombre }} = ${{
+							precio * contar(nombre)
+						}}
+					</p>
+					<p v-else>{{ nombre }} = ${{ precio }}</p>
+					<b-button
+						variant="danger"
+						@click="$emit('eliminarCarrito', { index })"
+					>
 						<b-icon icon="cart-x-fill"></b-icon>
 					</b-button>
 				</li>
@@ -37,11 +46,29 @@
 <script>
 export default {
 	name: 'Carrito',
+	data() {
+		return {
+			cantidadProductos: 0,
+		};
+	},
 	props: {
 		nombre: String,
 		precio: Number,
 		imagen: String,
 		productos: Array,
+	},
+	methods: {
+		contar(nombre) {
+			const nombresProductos = this.productos.map(
+				(producto) => producto.nombre
+			);
+
+			const filtrado = nombresProductos.filter(
+				(producto) => producto === nombre
+			);
+
+			return filtrado.length;
+		},
 	},
 };
 </script>

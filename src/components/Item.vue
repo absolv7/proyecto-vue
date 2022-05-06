@@ -3,25 +3,44 @@
 		<p>{{ nombre }}</p>
 		<b-img class="imagen-a" :src="imagen" alt="Image" thumbnail></b-img>
 		<p>${{ precio }}</p>
-		<b-button @click="$emit('agregarCarrito', { nombre, precio, imagen })" v-b-tooltip.hover title="Añadir a Carrito">
-			<b-icon icon="cart-plus"></b-icon>
-		</b-button>
+		<div class="checkout">
+			<b-button
+				@click="$emit('agregarCarrito', { nombre, precio, imagen })"
+				variant="primary"
+				v-b-tooltip.hover
+				title="Añadir a Carrito"
+				v-if="!checkout"
+			>
+				<b-icon icon="cart-plus"></b-icon>
+			</b-button>
+			<b-button
+				@click="$emit('comprar', { nombre, precio, imagen })"
+				variant="success"
+				v-b-tooltip.hover
+				title="Comprar"
+				v-if="!checkout"
+			>
+				<b-icon icon="cart-check"></b-icon>
+			</b-button>
+		</div>
 	</div>
 </template>
 
 <script>
 export default {
 	name: 'ItemVue',
-	data() {
-		return {
-			items: [],
-		};
-	},
+	// data() {
+	// 	return {
+	// 		nombre,
+	// 		cantidad,
+	// 	};
+	// },
 	props: {
 		nombre: String,
 		precio: Number,
 		imagen: String,
 		productos: Array,
+		checkout: Boolean,
 	},
 };
 </script>
@@ -35,17 +54,19 @@ export default {
 	width: 200px;
 	height: 250px;
 	margin-top: 10px;
-	/* margin-bottom: 20px; */
 	border: solid 1px;
 	padding: 20px;
 	border-radius: 20px;
-	
 }
 
 .imagen-a {
 	width: 110px;
 	height: 110px;
-	object-fit: contain
+	object-fit: contain;
 }
 
+.checkout {
+	display: flex;
+	gap: 5px;
+}
 </style>

@@ -22,6 +22,7 @@
 					:precio="precio"
 					:imagen="imagen"
 					@agregarCarrito="agregarCarrito"
+					@comprar="comprar"
 				></ItemVue>
 			</div>
 		</div>
@@ -38,7 +39,13 @@ export default {
 	data() {
 		return {
 			items,
-			productos: [],
+			productos: [
+				{
+					nombre: '',
+					imagen: '',
+					precio: 0,
+				},
+			],
 		};
 	},
 	components: { ItemVue, Carrito },
@@ -59,8 +66,17 @@ export default {
 				JSON.stringify(this.productos)
 			); //Agrego el array "Productos" al local storage
 		},
+		comprar({ nombre, precio, imagen }) {
+			this.productos = [{ nombre, precio, imagen }];
+			this.$router.push('/checkout');
+			localStorage.setItem(
+				'productos-vue',
+				JSON.stringify(this.productos)
+			);
+
+		},
 	},
-	created() {
+	mounted() {
 		let datosDB = JSON.parse(localStorage.getItem('productos-vue')); // Antes de montar la app creo una variable en el local storage
 		if (datosDB === null) {
 			this.productos = []; // Si no hay datos, el array queda vacío
